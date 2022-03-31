@@ -1,8 +1,8 @@
-let timerElement = document.getElementById('timer'),
-    hours = 0,
-    minutes = 0,
-    seconds = Number(timerElement.textContent),
-    date = new Date();
+const timerElement = document.getElementById('timer');
+const hours = 0;
+const minutes = 0;
+let seconds = Number(timerElement.textContent);
+const date = new Date();
 
 function decreaseTime() {
     date.setHours(hours);
