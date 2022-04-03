@@ -15,7 +15,11 @@ prev.onclick = () => {
 
 for (let i = 0; i < dotsArr.length; i++) {
     dotsArr[i].onclick = () => {
-        currentSlide(i + 1)
+        let slide = i + 1;
+        currentSlide(slide);
+
+
+
     }
 }
 
@@ -23,29 +27,37 @@ let index = 1;
 arrowSlides(index);
 
 function nextSlide() {
-    arrowSlides(index += 1);
+    index += 1;
+    arrowSlides(index);
 }
 
 function previousSlide() {
-    arrowSlides(index -= 1);
+    index -= 1;
+    arrowSlides(index);
 }
 
 function currentSlide(n) {
-    arrowSlides(index = n);
+    index = n;
+    arrowSlides(index);
 }
 
 function arrowSlides(n) {
+
     if (n > slidesArr.length) {
         index = 1;
     } else if (n < 1) {
         index = slidesArr.length;
     }
 
-    for (let i in slidesArr) {
-        slidesArr[i].classList.remove('slider__item_active');
-        dotsArr[i].classList.remove('slider__dot_active');
-    }
+    let activeSlideIndex = slidesArr.findIndex((element) => {
+        return element.classList.contains('slider__item_active');
+    })
+
+    slidesArr[activeSlideIndex].classList.remove('slider__item_active');
+    dotsArr[activeSlideIndex].classList.remove('slider__dot_active');
+
     slidesArr[index - 1].classList.add('slider__item_active');
     dotsArr[index - 1].classList.add('slider__dot_active');
+
 }
 

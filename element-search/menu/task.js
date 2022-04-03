@@ -1,12 +1,16 @@
 let links = document.querySelectorAll('.menu__link');
 let arrLinks = Array.from(links);
 
+
 for (let i in arrLinks) {
     arrLinks[i].onclick = () => {
         let linksWithSub = arrLinks[i].closest('li').querySelector('.menu_sub');
-        if (linksWithSub){
+        if (!linksWithSub.classList.contains('menu_active')){
             close();
             linksWithSub.classList.add('menu_active');
+            return false;
+        } else if (linksWithSub.classList.contains('menu_active')) {
+            close()
             return false;
         }
     }
