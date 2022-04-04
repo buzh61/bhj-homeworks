@@ -17,9 +17,6 @@ for (let i = 0; i < dotsArr.length; i++) {
     dotsArr[i].onclick = () => {
         let slide = i + 1;
         currentSlide(slide);
-
-
-
     }
 }
 
