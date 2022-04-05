@@ -7,10 +7,8 @@ for (let i in arrLinks) {
         let linksWithSub = arrLinks[i].closest('li').querySelector('.menu_sub');
         let nestedLinks = arrLinks[i].closest('li').closest('.menu_sub');
         let linksWithoutSub = arrLinks[i].closest('li').closest('.menu_main');
-        
-        if (nestedLinks) {
-            close();
-        } else if (linksWithoutSub && !linksWithSub) {
+
+        if (linksWithoutSub && !linksWithSub || nestedLinks) {
             close();
         } else if (!linksWithSub.classList.contains('menu_active')) {
             close();
