@@ -18,7 +18,7 @@ const activeListsArr = Array.from(activeLists)
 
 
 for (let i in dropdownElementsArr) {
-    dropdownElementsArr[i].onclick = (event) => {
+    dropdownElementsArr[i].onclick = () => {
         toggleDropdowns(i);
     }
 }
