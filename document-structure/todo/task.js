@@ -2,15 +2,15 @@ const input = document.querySelector('.tasks__input');
 const form = document.querySelector('form');
 const list = document.querySelector('.tasks__list');
 
-form.onkeydown = (event) => {
-    if (event.key === 'Enter' && input.value !== '') {
+
+form.onsubmit = (event) => {
+    event.preventDefault();
+    if (input.value.trim() !== '') {
         addTask(event);
     }
 }
 
-function addTask(event) {
-    event.preventDefault();
-
+function addTask() {
     let task = document.createElement('div');
     task.classList = 'task';
 

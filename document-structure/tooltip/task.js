@@ -3,9 +3,13 @@ const links = Array.from(document.querySelectorAll('a.has-tooltip'))
 for (let i in links) {
     links[i].onclick = (el) => {
         el.preventDefault();
-        deleteActiveTooltips();
-        createTooltip(links[i])
-        setTooltipPosition(links[i], 'left')
+        if (links[i].querySelector('.tooltip_active')) {
+            deleteActiveTooltips();
+        } else {
+            deleteActiveTooltips();
+            createTooltip(links[i])
+            setTooltipPosition(links[i])
+        }
     }
 }
 
@@ -28,23 +32,24 @@ function createTooltip(el) {
     el.appendChild(tooltip)
 }
 
-function setTooltipPosition(parent, value) {
-    const tooltip = document.querySelector('.tooltip')
-    tooltip.setAttribute('data-position', value);
+function setTooltipPosition(el) {
+    const tooltip = el.querySelector('.tooltip')
+    const attribute = el.getAttribute('data-position');
 
-    let width = parent.offsetWidth;
-    let height = parent.offsetHeight;
+    let width = el.offsetWidth;
+    let height = el.offsetHeight;
 
-    if (value === 'top') {
+    if (attribute === 'top') {
         tooltip.style.bottom = `${height}px`;
         console.log(1)
-    } else if (value === 'bottom') {
+    } else if (attribute === 'bottom') {
         tooltip.style.top = `${height}px`;
-    } else if (value === 'left') {
+    } else if (attribute === 'left') {
         tooltip.style.right = `${width}px`;
         tooltip.style.top = `0`;
-    } else if (value === 'right') {
+    } else if (attribute === 'right') {
         tooltip.style.left = `${width}px`;
         tooltip.style.top = `0`;
     }
 }
+

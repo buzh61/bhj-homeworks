@@ -44,9 +44,7 @@ function addToCart(el) {
     product.append(count)
     let cart = document.querySelector('.cart__products');
 
-    let productIndex = cartProducts.findIndex((item) => {
-        return item.getAttribute('data-id') === id;
-    })
+    let productIndex = cartProducts.findIndex((item) => item.getAttribute('data-id') === id)
 
     if (productIndex >= 0) {
         let currentCount = cartProducts[productIndex].querySelector('.cart__product-count')
