@@ -6,7 +6,7 @@ const url = 'https://netology-slow-rest.herokuapp.com/upload.php'
 
 form.onsubmit = (e) => {
     e.preventDefault();
-    const formSent = new FormData();
+    const formSent = new FormData(form);
     const xhr = new XMLHttpRequest();
 
     xhr.upload.onprogress = (event) => {
