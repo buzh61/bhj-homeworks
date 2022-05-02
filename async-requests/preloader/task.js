@@ -2,7 +2,7 @@ const items = document.getElementById('items');
 const cache = localStorage.getItem('element')
 
 if (cache) {
-    items.insertAdjacentHTML('afterBegin', cache);
+    items.innerHTML = cache;
     disableLoader();
 } else {
     sendRequest();
